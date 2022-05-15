@@ -52,24 +52,21 @@ namespace Hangfire.Mailer.Migrations
                    CronExpress = c.String(nullable: false)
                })
                .PrimaryKey(t => t.MedicalId);
-             
-            
 
-          /*  CreateTable(
-               "dbo.Login",
-               c => new
-               {
-                   
-                   LoginIdPhone = c.String(nullable: false),
-                   Password = c.Int(nullable: false),
-                   PFirstName = c.String(nullable: true),
-                   PLastName = c.String(nullable: true),
-                   Email = c.String(nullable: false),
-                   CreateDate = c.DateTime(nullable: false),
-                   
-                   
-               })
-               .PrimaryKey(t => t.LoginIdPhone);*/
+             CreateTable(
+                 "dbo.User",
+                 c => new
+                 {
+
+                     UserId = c.Int(nullable: false, identity: true),
+                     LoginIdPhone = c.String(nullable: false),
+                     Password = c.String(nullable: false),
+                     PFirstName = c.String(nullable: true),
+                     PLastName = c.String(nullable: true),
+                     Email = c.String(nullable: true),
+                     CreateDate = c.DateTime(nullable: false),
+                 })
+                 .PrimaryKey(t => t.UserId);
         }
         
         public override void Down()
@@ -77,6 +74,7 @@ namespace Hangfire.Mailer.Migrations
             DropTable("dbo.Comments");
             DropTable("dbo.Patient");
             DropTable("dbo.Medical");
+            DropTable("dbo.User");
         }
     }
 }
