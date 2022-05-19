@@ -77,6 +77,12 @@ namespace Hangfire.Mailer.Controllers
                 medical.CreateDate = DateTime.Today;
                 db.Medical.Add(medical);
                 db.SaveChanges();
+
+                //BackgroundJob.Enqueue(() => RemainderFunc.NotifyNewRemainder(medical.PatientId, medical.CronExpress));
+                //נשלח בתדירות קרון
+                var JobName = medical.PatientId.ToString() + medical.CronExpress;
+                RecurringJob.AddOrUpdate(JobName, () => RemainderFunc.NotifyNewRemainder(medical.PatientId, medical.CronExpress), medical.CronExpress);
+
                 return RedirectToAction("Index");
             }
 
@@ -113,9 +119,13 @@ namespace Hangfire.Mailer.Controllers
         {
             if (ModelState.IsValid)
             {
-                medical.UpdateDate= DateTime.Today;
+                medical.UpdateDate = DateTime.Today;
                 db.Entry(medical).State = EntityState.Modified;
                 db.SaveChanges();
+
+                var JobName = medical.PatientId.ToString() + medical.CronExpress;
+                RecurringJob.AddOrUpdate(JobName, () => RemainderFunc.NotifyNewRemainder(medical.PatientId, medical.CronExpress), medical.CronExpress);
+
                 return RedirectToAction("Index");
             }
             return View(medical);
@@ -161,7 +171,8 @@ namespace Hangfire.Mailer.Controllers
             {
                 return HttpNotFound();
             }
-            return View(db.Medical.Where(a => a.PatientId.Equals(IdPatient)).ToList()) ;
+            return View(db.Medical.Where(a => a.PatientId.Equals(IdPatient)).ToList());
         }
+
     }
 }
