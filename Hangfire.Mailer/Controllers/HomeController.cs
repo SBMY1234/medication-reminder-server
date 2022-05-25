@@ -60,14 +60,14 @@ namespace Hangfire.Mailer.Controllers
 
                 //טוקן - N1eBwpAyJ6qtuVPS
                 //יצירת טוקן לימות משיח
-                //  https://private.call2all.co.il/ym/api/Login?username=0796075824&password=0548538616&
+                //  https://private.call2all.co.il/ym/api/Login?username=XXXX&password=XXXXX&
                 //{"responseStatus":"OK","token":"N1eBwpAyJ6qtuVPS","yemotAPIVersion":6}
                 //תשובה שגויה
                 //{"responseStatus":"FORBIDDEN","message":"user name or password do not match","yemotAPIVersion":6}
                 //בדיקה אם הטוקן פעיל
                 //  https://private.call2all.co.il/ym/api/GetSession?token=N1eBwpAyJ6qtuVPS
                 //תשובת השרת
-                // { "responseStatus":"OK","name":"0796075824","units":10.0,"unitsExpireDate":"2023-05-13","contactName":"0548538616","phones":"0548538616","invoiceName":"תמך","invoiceAddress":"","fax":"","accessPassword":"1234","recordPassword":"1234","email":"5319sb@gmail.com","organization":"התראות מדיקל","creditFile":"Yemot","username":"0796075824","yemotAPIVersion":6}
+                // { "responseStatus":"OK","name":"0796075824","units":10.0,"unitsExpireDate":"2023-05-13","contactName":"XXXXX","phones":"XXXXX","invoiceName":"XXX","invoiceAddress":"","fax":"","accessPassword":"XXXX","recordPassword":"XXXX","email":"XXXX","organization":"התראות מדיקל","creditFile":"Yemot","username":"XXXX","yemotAPIVersion":6}
                 // תגובה שגויה-
                 //{"yemotAPIVersion":6,"responseStatus":"EXCEPTION","message":"IllegalStateException(session token is invalid)"}
 
