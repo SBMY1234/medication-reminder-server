@@ -1,4 +1,4 @@
-Hangfire.Mailer
+medication-reminder-server
 ===============
 
-Sample project for the [Sending Mail in Background with ASP.NET MVC](http://docs.hangfire.io/en/latest/tutorials/send-email.html) tutorial.
+API project to call users by Yemot Mashiach api and manage register to service.
